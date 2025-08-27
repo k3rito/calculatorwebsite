@@ -1,0 +1,6 @@
+# Allow all user-agents to crawl the site
+User-agent: *
+Disallow:
+
+# Link to the sitemap
+Sitemap: https://k3rito.github.io/calculatorwebsite/sitemap.xml
