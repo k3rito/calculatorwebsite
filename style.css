@@ -1,160 +1,90 @@
-/* الحقوق محفوظة K3RITO */
-
-:root {
-  --bg-dark: #0a0a0f;
-  --bg-gradient: linear-gradient(135deg, #0a0a0f, #1a052b, #2d0a4f);
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --text: #eaeaff;
-  --muted: #9d8fb3;
-  --accent: #a855f7;
-  --accent2: #7e22ce;
-  --border: rgba(255, 255, 255, 0.1);
-  --shadow: rgba(0, 0, 0, 0.6);
-  --radius: 18px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
+/* ======== الهيكل الرئيسي ======== */
 html, body {
   margin: 0;
   padding: 0;
-  font-family: "Cairo", system-ui, sans-serif;
-  background: var(--bg-gradient);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-  color: var(--text);
-  min-height: 100%;
-}
-
-@keyframes gradientShift {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
+  font-family: "Cairo", sans-serif;
+  background: linear-gradient(135deg, #0a0a0f, #1a052b, #2d0a4f);
+  color: #eaeaff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   max-width: 900px;
   margin: 0 auto;
-  padding: 24px;
-}
-
-h1 {
-  font-size: clamp(26px, 5vw, 36px);
-  font-weight: 800;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 0 0 10px;
-}
-
-.lead {
-  color: var(--muted);
-  margin-bottom: 24px;
-}
-
-.card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
   padding: 20px;
-  box-shadow: 0 4px 20px var(--shadow);
+}
+
+/* ======== التبويبات ======== */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
   margin-bottom: 20px;
-  backdrop-filter: blur(8px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px var(--shadow);
-}
-
-h2 {
-  font-size: 20px;
-  margin-bottom: 12px;
-  color: var(--accent);
-}
-
-label {
-  display: block;
-  margin: 8px 0 4px;
-  font-size: 14px;
-  color: var(--muted);
-}
-
-input[type="date"],
-input[type="datetime-local"],
-input[type="number"] {
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text);
-  outline: none;
-  transition: border 0.3s ease, background 0.3s ease;
-}
-
-input:focus {
-  border-color: var(--accent);
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.results {
-  margin-top: 12px;
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--text);
-}
-
-footer {
-  text-align: center;
-  margin-top: 30px;
-  font-size: 13px;
-  color: var(--muted);
-  padding: 10px;
-  border-top: 1px solid var(--border);
-}
-
-/* أزرار لو احتجنا */
-button {
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  color: #fff;
-  padding: 10px 16px;
+.tab-btn {
+  background: linear-gradient(90deg, #a855f7, #7e22ce);
   border: none;
   border-radius: 12px;
+  padding: 10px 16px;
+  color: #fff;
   cursor: pointer;
   font-weight: 600;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.6);
+.tab-btn.active {
+  transform: scale(1.05);
 }
 
-button:active {
-  transform: scale(0.97);
+/* ======== المحتوى ======== */
+.tab-content {
+  display: none;
+  flex-direction: column;
 }
-/* ========================= */
-/* Responsive Design - Mobile */
-/* ========================= */
+
+.tab-content.active {
+  display: flex;
+}
+
+/* ======== البطاقات ======== */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ======== Responsive ======== */
 @media (max-width: 600px) {
+  .wrap {
+    padding: 12px;
+  }
+
+  .tabs {
+    gap: 5px;
+  }
+
   .tab-btn {
     padding: 8px 12px;
     font-size: 14px;
   }
 
   .card {
-    padding: 10px;
+    padding: 12px;
   }
 
   input, button {
     font-size: 14px;
-  }
-
-  h2 {
-    font-size: 18px;
   }
 }
