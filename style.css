@@ -1,232 +1,128 @@
-/* ======== الأساسيات ======== */
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: "Cairo", sans-serif;
-  background: linear-gradient(135deg, #0a0a0f, #1a052b, #2d0a4f);
-  color: #eaeaff;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/* style.css */
+
+/* --- Variables & Colors --- */
+:root{
+  --accent:#a855f7;
+  --accent2:#7e22ce;
+  --bg-gradient: linear-gradient(135deg,#0a0a0f,#1a052b,#2d0a4f);
+  --text:#eaeaff;
+  --muted:#b0a5c9;
+  --card-bg: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.12);
+  --radius: 18px;
 }
 
-/* ======== التغليف الرئيسي ======== */
-.wrap {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 30px 20px;
-  gap: 25px; /* تباعد بين العناصر العمودية */
+/* --- Basic layout --- */
+html,body{
+  height:100%;
+  margin:0;
+  padding:0;
+  font-family: "Cairo", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg-gradient);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
 }
 
-/* ======== العناوين ======== */
-h1 {
-  font-size: clamp(32px, 6vw, 44px);
-  font-weight: 800;
-  text-align: center;
-  background: linear-gradient(90deg, #a855f7, #7e22ce);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 15px;
+.wrap{
+  max-width:900px;
+  margin:0 auto;
+  padding:30px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  min-height:100vh;
 }
 
-.lead {
-  text-align: center;
-  font-size: 18px;
-  color: #b0a5c9;
-  margin-bottom: 25px;
+h1{
+  margin:0;
+  font-weight:800;
+  font-size:clamp(28px,5.5vw,42px);
+  text-align:center;
+  background: linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-/* ======== التبويبات ======== */
-.tabs {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 20px;
+.lead{
+  text-align:center;
+  margin:0;
+  color:var(--muted);
+  font-size:16px;
 }
 
-.tab-btn {
-  background: linear-gradient(90deg, #a855f7, #7e22ce);
-  border: none;
-  border-radius: 16px;
-  padding: 14px 24px;
-  color: #fff;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 16px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+/* --- Tabs --- */
+.tabs{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
 }
 
-.tab-btn.active {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(168,85,247,0.5);
+.tab-btn{
+  appearance:none;
+  border:0;
+  border-radius:14px;
+  padding:12px 18px;
+  font-weight:700;
+  font-size:15px;
+  color:#fff;
+  background: linear-gradient(90deg,var(--accent),var(--accent2));
+  cursor:pointer;
+  transition: transform 0.2s;
 }
 
-/* ======== محتوى التبويبات ======== */
-.tab-content {
-  display: none;
-  flex-direction: column;
-  gap: 20px; /* تباعد بين محتويات البطاقة */
+.tab-btn.active{
+  transform: scale(1.05);
 }
 
-.tab-content.active {
-  display: flex;
+/* --- Cards --- */
+.card{
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding:18px;
+  border:1px solid var(--border);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.55);
+  transition: opacity 0.3s, transform 0.3s;
 }
 
-/* ======== البطاقات ======== */
-.card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 20px;
-  padding: 25px;
-  box-shadow: 0 6px 25px rgba(0,0,0,0.6);
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* تباعد داخل البطاقة */
+/* --- Hide all tab contents by default --- */
+.tab-content{
+  display:none;
+  opacity:0;
+  transform: translateY(10px);
 }
 
-/* ======== العناوين داخل البطاقات ======== */
-.card h2 {
-  font-size: clamp(22px, 5vw, 28px);
-  color: #a855f7;
-  margin-bottom: 12px;
+/* --- Show only active tab --- */
+.tab-content.active{
+  display:block;
+  opacity:1;
+  transform: translateY(0);
 }
 
-/* ======== التسميات ======== */
-label {
-  display: block;
-  font-size: 16px;
-  margin-bottom: 6px;
-  color: #c0b8d6;
+/* --- Inputs --- */
+input{
+  width:100%;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,0.06);
+  color:var(--text);
+  font-size:15px;
+  box-sizing:border-box;
+  margin-top:8px;
+  margin-bottom:12px;
 }
 
-/* ======== الحقول ======== */
-input[type="date"],
-input[type="datetime-local"],
-input[type="number"],
-input[type="time"] {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.08);
-  color: #eaeaff;
-  font-size: 16px;
-  outline: none;
-  transition: border 0.3s ease, background 0.3s ease;
+/* --- Footer --- */
+footer{
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+  margin-top:20px;
 }
 
-input:focus {
-  border-color: #a855f7;
-  background: rgba(255,255,255,0.14);
-}
-
-/* ======== نتائج ======== */
-.results {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #eaeaff;
-}
-
-/* ======== الأزرار ======== */
-button {
-  background: linear-gradient(90deg, #a855f7, #7e22ce);
-  color: #fff;
-  padding: 14px 24px;
-  border: none;
-  border-radius: 14px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 16px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(168,85,247,0.5);
-}
-
-button:active {
-  transform: scale(0.97);
-}
-
-/* ======== التذييل ======== */
-footer {
-  text-align: center;
-  font-size: 14px;
-  color: #b0a5c9;
-  padding: 15px;
-  border-top: 1px solid rgba(255,255,255,0.12);
-}
-
-/* ======== Responsive ======== */
-@media (max-width: 768px) {
-  .wrap {
-    padding: 20px 15px;
-    gap: 20px;
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  .lead {
-    font-size: 16px;
-  }
-
-  .tab-btn {
-    padding: 12px 18px;
-    font-size: 15px;
-  }
-
-  .card {
-    padding: 18px;
-    gap: 16px;
-  }
-
-  input, button {
-    font-size: 15px;
-    padding: 12px 14px;
-  }
-
-  .card h2 {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .wrap {
-    padding: 15px 10px;
-    gap: 15px;
-  }
-
-  h1 {
-    font-size: 24px;
-  }
-
-  .lead {
-    font-size: 14px;
-  }
-
-  .tab-btn {
-    padding: 10px 12px;
-    font-size: 14px;
-  }
-
-  .card {
-    padding: 14px;
-    gap: 12px;
-  }
-
-  input, button {
-    font-size: 14px;
-    padding: 10px 12px;
-  }
-
-  .card h2 {
-    font-size: 18px;
-  }
+/* --- Responsive --- */
+@media(max-width:480px){
+  .wrap{padding:18px 12px; gap:16px;}
+  h1{font-size:clamp(22px,7.5vw,28px);}
 }
