@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اتصل بنا – K3RITO Tools</title>
+  <meta name="description" content="تواصل معنا بخصوص أي استفسار أو اقتراح حول أدوات K3RITO التفاعلية.">
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="اتصل بنا, تواصل, دعم, K3RITO">
+  <link rel="canonical" href="https://k3rito.github.io/calculatorwebsite/contact.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ContactPage",
+    "name":"اتصل بنا – K3RITO Tools",
+    "url":"https://k3rito.github.io/calculatorwebsite/contact.html",
+    "publisher":{
+      "@type":"Organization",
+      "name":"K3RITO"
+    }
+  }
+  </script>
+</head>
+<body>
+  <main class="wrap">
+    <h1>📨 اتصل بنا</h1>
+    <p class="lead">يسعدنا تواصلك لأي استفسار، اقتراح، أو ملاحظات.</p>
+
+    <!-- خيار 1: mailto (يفتح برنامج البريد) -->
+    <article class="card">
+      <h2>إرسال رسالة عبر البريد</h2>
+      <p>اضغط الزر أدناه لإرسال رسالة مباشرة عبر بريدك:</p>
+      <p>
+        <a class="tab-btn" href="mailto:your-email@example.com?subject=استفسار%20حول%20K3RITO%20Tools">إرسال بريد</a>
+      </p>
+      <p style="color:var(--muted);font-size:14px">← بدّل <code>your-email@example.com</code> ببريدك.</p>
+    </article>
+
+    <!-- خيار 2: Formspree (أدخل endpoint الخاص بك) -->
+    <article class="card">
+      <h2>نموذج تواصل مباشر</h2>
+      <form id="contactForm" action="https://formspree.io/f/mvgbzjg" method="POST" novalidate>
+        <label for="name">الاسم</label>
+        <input type="text" id="name" name="name" placeholder="اسمك" required>
+
+        <label for="email">البريد الإلكتروني</label>
+        <input type="email" id="email" name="email" placeholder="name@example.com" required>
+
+        <label for="message">الرسالة</label>
+        <input type="text" id="message" name="message" placeholder="اكتب رسالتك هنا" required>
+
+        <button type="submit">إرسال</button>
+        <div class="results" id="formResult" aria-live="polite" style="margin-top:10px;"></div>
+      </form>
+      <p style="color:var(--muted);font-size:14px"><code></code></p>
+    </article>
+
+    <footer>
+      جميع الحقوق محفوظة © 2025 K3RITO ·
+      <a href="index.html">العودة للصفحة الرئيسية</a> ·
+      <a href="privacy.html">سياسة الخصوصية</a>
+    </footer>
+  </main>
+
+  <!-- تحسين بسيط للتجربة + منع الإرسال الفارغ -->
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const out = document.getElementById('formResult');
+
+      if(!name || !email || !message){
+        e.preventDefault();
+        out.textContent = '🛑 يرجى تعبئة جميع الحقول قبل الإرسال.';
+        return;
+      }
+      out.textContent = '⏳ جاري إرسال الرسالة...';
+    });
+  </script>
+</body>
+</html>
